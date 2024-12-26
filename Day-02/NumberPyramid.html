@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Pyramid</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #bdc3c7;
+            border-radius: 5px;
+            width: 200px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        pre {
+            background-color: #ecf0f1;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            padding: 15px;
+            font-size: 16px;
+            white-space: pre-wrap;
+            color: #2c3e50;
+            max-width: 300px;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        input:focus, button:focus {
+            outline: none;
+            box-shadow: 0 0 5px #3498db;
+        }
+    </style>
+</head>
+<body>
+    <h2>Number Pyramid Generator</h2>
+    <input type="number" id="rows" min="1" max="10" placeholder="Enter rows (1-10)">
+    <button onclick="printPyramid()">Generate Pyramid</button>
+    <pre id="output"></pre>
+
+    <script>
+        function printPyramid() {
+            // Get input value
+            let rows = document.getElementById('rows').value;
+            let output = '';
+            
+            // Validate input
+            if (rows < 1 || rows > 10) {
+                document.getElementById('output').textContent = 
+                    "Please enter a number between 1 and 10";
+                return;
+            }
+
+            // Loop for each row
+            for (let i = 1; i <= rows; i++) {
+                let rowNumbers = '';
+                
+                // Loop for numbers in current row
+                for (let j = 1; j <= i; j++) {
+                    // Skip if divisible by 3
+                    if (j % 3 === 0) {
+                        continue;
+                    }
+                    
+                    // Stop if divisible by 7
+                    if (j % 7 === 0) {
+                        document.getElementById('output').textContent = output;
+                        return;
+                    }
+                    
+                    // Add number to row string
+                    rowNumbers += j + ' ';
+                }
+                
+                // Add row to output
+                output += rowNumbers + '\n';
+            }
+            
+            // Display the pyramid
+            document.getElementById('output').textContent = output;
+        }
+    </script>
+</body>
+</html>
