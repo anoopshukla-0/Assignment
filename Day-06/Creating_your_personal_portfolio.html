@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Portfolio</title>
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background-color: white;
+        color: black;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .navbar {
+        background-color: orangered;
+        width: 100%;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      /* Dark mode toggle button on the left */
+      .dark-mode-toggle {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: transparent;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      .dark-mode-toggle i {
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .dark-mode-toggle:hover i {
+        transform: scale(1.2);
+      }
+
+      .navbar > h3 {
+        color: rgb(13, 13, 101);
+        font-size: 2rem;
+        margin-bottom: 10px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .menu {
+        display: flex;
+        gap: 20px;
+      }
+
+      .menu h6 {
+        color: white;
+        padding: 5px 10px;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+
+      .menu h6:hover {
+        background-color: grey;
+        border-radius: 19px;
+      }
+
+      /* About Section */
+      .about {
+        margin: 40px 20px;
+        font-size: 1.2rem;
+      }
+
+      .about img {
+        margin-top: 20px;
+        width: 140px;
+        height: 150px;
+        border-radius: 50%;
+      }
+
+      /* Projects Section */
+      .projects {
+        margin: 40px 20px;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+
+      .project {
+        margin-bottom: 30px;
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 8px;
+      }
+
+      .project img {
+        height: 140px;
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 15px;
+      }
+
+      .project-link {
+        color: orangered;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .project-link:hover {
+        text-decoration: underline;
+      }
+
+      /* Technology List */
+      .technology-list {
+        margin-top: 15px;
+        list-style-type: disc;
+        padding-left: 20px;
+      }
+
+      .technology-list li {
+        margin-bottom: 5px;
+      }
+
+      /* Contact Section */
+      .contact {
+        margin-top: 40px;
+      }
+
+      .contact input,
+      .contact textarea {
+        width: 100%;
+        max-width: 400px;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .contact button {
+        background-color: orangered;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      .contact button:hover {
+        background-color: darkred;
+      }
+
+      /* Footer */
+      footer {
+        background-color: orangered;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 40px;
+      }
+
+      /* Dark Mode Styles */
+      body.dark-mode {
+        background-color: black;
+        color: white;
+      }
+
+      .navbar.dark-mode {
+        background-color: darkslategray;
+      }
+
+      .navbar > h3.dark-mode {
+        color: lightgray;
+      }
+
+      .menu h6.dark-mode {
+        color: lightgray;
+      }
+
+      .about.dark-mode img {
+        border: 2px solid white;
+      }
+
+      .projects.dark-mode {
+        border-color: white;
+      }
+
+      footer.dark-mode {
+        background-color: darkslategray;
+      }
+
+      .contact button.dark-mode {
+        background-color: gray;
+      }
+
+      .contact button.dark-mode:hover {
+        background-color: darkgray;
+      }
+
+      /* Mobile View */
+      @media (max-width: 768px) {
+        .navbar {
+          height: 240px;
+          max-width: 100%;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .navbar > h3{
+            text-align: center;
+
+        }
+
+        .dark-mode-toggle {
+          position: static;
+          margin-top: 10px;
+        }
+
+        .about {
+          text-align: center;
+        }
+
+        .dark-mode-toggle {
+          margin-top: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="navbar">
+      <!-- Dark mode toggle button on the left -->
+      <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+      </button>
+      <h3 id="navbar-title">Welcome to My Portfolio</h3>
+      <nav class="menu">
+        <h6>About</h6>
+        <h6>Projects</h6>
+        <h6>Contact</h6>
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- About Section -->
+      <section class="about">
+        <h3>About Me</h3>
+        <p>
+          Hello! I am a web developer with a passion for creating functional and
+          visually appealing web applications.
+        </p>
+        <img src="Anoop2.png" alt="A Picture of Me" />
+      </section>
+
+      <!-- Projects Section -->
+      <section class="projects">
+        <h3 class="section-title">My Projects</h3>
+        <div class="project">
+          <h4>Personal Blog</h4>
+          <img src="https://picsum.photos/536/354" alt="Project Screenshot" />
+          <p>
+            A personal blog where I write about web development, programming,
+            and technology.
+          </p>
+          <a href="#" class="project-link">View Project</a>
+          <ul class="technology-list">
+            <li><strong>Technology Used:</strong></li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+          </ul>
+        </div>
+        <div class="project">
+          <h4>E-Commerce Website</h4>
+          <img
+            src="https://picsum.photos/536/355"
+            alt="E-Commerce Project Screenshot"
+          />
+          <p>
+            An e-commerce website built to simulate a real-world online shopping experience.
+          </p>
+          <a href="#" class="project-link">View Project</a>
+          <ul class="technology-list">
+            <li><strong>Technology Used:</strong></li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+          </ul>
+        </div>
+        <div class="contact">
+          <h3>Contact Me</h3>
+          <p>Full Name: <input type="text" required /></p>
+          <p>Email: <input type="email" required /></p>
+          <p>Message:</p>
+          <textarea name="text" required></textarea>
+          <button>Submit</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Anoop Shukla. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Function to toggle dark mode
+      function toggleDarkMode() {
+        const body = document.body;
+        const navbar = document.querySelector(".navbar");
+        const heading = document.querySelector("#navbar-title");
+        const menuItems = document.querySelectorAll(".menu h6");
+        const aboutSection = document.querySelector(".about");
+        const projectsSection = document.querySelector(".projects");
+        const footer = document.querySelector("footer");
+        const contactButton = document.querySelector(".contact button");
+
+        // Toggle dark mode class
+        body.classList.toggle("dark-mode");
+        navbar.classList.toggle("dark-mode");
+        heading.classList.toggle("dark-mode");
+        footer.classList.toggle("dark-mode");
+
+        // Update menu item styles
+        menuItems.forEach((item) => item.classList.toggle("dark-mode"));
+
+        // Toggle dark mode for sections
+        aboutSection.classList.toggle("dark-mode");
+        projectsSection.classList.toggle("dark-mode");
+        contactButton.classList.toggle("dark-mode");
+      }
+    </script>
+  </body>
+</html>

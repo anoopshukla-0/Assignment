@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Building a Contact Form</title>
+    <style>
+      /* General Reset */
+      /* General Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", Arial, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #f5d5cb, #fef6e4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: #333;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      div {
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        padding: 30px 40px;
+        width: 100%;
+        max-width: 400px;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      div:hover {
+        transform: translateY(-10px);
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1.5px solid #ccc;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.3s ease-in-out;
+        background: #f9f9f9;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: #ff6f61;
+        outline: none;
+        box-shadow: 0 0 5px rgba(255, 111, 97, 0.5);
+      }
+
+      textarea {
+        resize: none;
+        height: 120px;
+      }
+
+      button {
+        width: 100%;
+        padding: 15px;
+        background-color: #ff6f61;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out,
+          transform 0.2s ease-in-out;
+      }
+
+      button:hover {
+        background-color: #e2554d;
+        transform: scale(1.05);
+      }
+
+      button:active {
+        transform: scale(0.95);
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: #aaa;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Contact Form</h1>
+    <div>
+      <input type="text" placeholder="User's Name" required />
+      <input type="email" placeholder="Email" required />
+      <select name="Gender" required>
+        <option value="">--Please Choose Gender--</option>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+        <option value="other">Other</option>
+      </select>
+      <textarea name="text" placeholder="Your Message" required></textarea>
+      <button type="submit">Submit</button>
+    </div>
+  </body>
+</html>
