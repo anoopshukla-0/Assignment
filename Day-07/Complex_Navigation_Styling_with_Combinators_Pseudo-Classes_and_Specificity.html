@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complex Navigation Bar</title>
+  <style>
+    /* Reset default margin and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* General navigation bar styling */
+    nav {
+      background-color: #f4f4f4;
+      padding: 10px 20px;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: space-around;
+      border-bottom: 2px solid #ddd;
+    }
+
+    /* Section styling */
+    .nav-section {
+      flex: 1;
+    }
+
+    .nav-section h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #444;
+    }
+
+    /* Descendant combinator: style all links in each section */
+    .nav-section a {
+      text-decoration: none;
+      margin: 5px;
+      display: block;
+      font-size: 14px;
+    }
+
+    .section-1 a {
+      color: #0073e6; /* Blue links */
+    }
+
+    .section-2 a {
+      color: #e67e22; /* Orange links */
+    }
+
+    .section-3 a {
+      color: #2ecc71; /* Green links */
+    }
+
+    /* Hover and active pseudo-classes for dynamic styling */
+    .nav-section a:hover {
+      color: #000;
+      text-decoration: underline;
+    }
+
+    .nav-section a:active {
+      color: red;
+    }
+
+    /* Child combinator: style direct child links differently */
+    .nav-section > a {
+      font-weight: bold;
+    }
+
+    /* Attribute selector: override styles for links with href starting with "https" */
+    a[href^="https"] {
+      color: purple !important; /* Overrides other styles */
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-section section-1">
+      <h2>Section 1</h2>
+      <a href="https://example.com">Home</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <div class="nav-section section-2">
+      <h2>Section 2</h2>
+      <a href="https://docs.example.com">Docs</a>
+      <a href="/faq">FAQ</a>
+      <a href="/support">Support</a>
+    </div>
+    <div class="nav-section section-3">
+      <h2>Section 3</h2>
+      <a href="https://blog.example.com">Blog</a>
+      <a href="/news">News</a>
+      <a href="/events">Events</a>
+    </div>
+  </nav>
+</body>
+</html>
