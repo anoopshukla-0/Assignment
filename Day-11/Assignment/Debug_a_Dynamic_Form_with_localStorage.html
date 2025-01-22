@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Preferences Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Set Your Preferences</h1>
+  
+  <form id="preferencesForm">
+    <label for="theme">Theme:</label>
+    <select id="theme">
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="blue">Blue</option>
+    </select>
+
+    <label for="language">Language:</label>
+    <select id="language">
+      <option value="en">English</option>
+      <option value="es">Spanish</option>
+    </select>
+
+    <label for="notifications">Notifications:</label>
+    <input type="checkbox" id="notifications">
+
+    <button type="submit">Save Preferences</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('preferencesForm');
+    const theme = document.getElementById('theme');
+    const language = document.getElementById('language');
+    const notifications = document.getElementById('notifications');
+
+    // Function to dynamically update the theme
+    const applyTheme = (selectedTheme) => {
+      document.body.style.backgroundColor = selectedTheme === 'dark' ? '#333' : selectedTheme === 'blue' ? '#add8e6' : '#fff';
+      document.body.style.color = selectedTheme === 'dark' ? '#fff' : '#000';
+    };
+
+    // Load preferences on page load
+    window.onload = () => {
+      const preferences = JSON.parse(localStorage.getItem('preferences'));
+      if (preferences) {
+        theme.value = preferences.theme;
+        language.value = preferences.language;
+        notifications.checked = preferences.notifications;
+        applyTheme(preferences.theme);
+      }
+    };
+
+    // Save preferences and update theme dynamically
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const preferences = {
+        theme: theme.value,
+        language: language.value,
+        notifications: notifications.checked
+      };
+      localStorage.setItem('preferences', JSON.stringify(preferences));
+      applyTheme(preferences.theme);
+      alert('Preferences Saved!');
+    });
+  </script>
+</body>
+</html>

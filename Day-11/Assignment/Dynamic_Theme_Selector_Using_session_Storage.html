@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Selector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .light-theme {
+      background-color: #ffffff;
+      color: #000000;
+    }
+    .dark-theme {
+      background-color: #000000;
+      color: #ffffff;
+    }
+    .blue-theme {
+      background-color: #007BFF;
+      color: #ffffff;
+    }
+    select {
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Theme Selector</h1>
+  <label for="themeDropdown">Choose a theme:</label>
+  <select id="themeDropdown">
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+    <option value="blue">Blue</option>
+  </select>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const themeDropdown = document.getElementById("themeDropdown");
+      const body = document.body;
+
+      // Function to apply the selected theme
+      const applyTheme = (theme) => {
+        body.className = `${theme}-theme`;
+      };
+
+      // Check sessionStorage for saved theme and apply it
+      const savedTheme = sessionStorage.getItem("selectedTheme") || "light";
+      themeDropdown.value = savedTheme;
+      applyTheme(savedTheme);
+
+      // Update theme on dropdown change
+      themeDropdown.addEventListener("change", () => {
+        const selectedTheme = themeDropdown.value;
+        sessionStorage.setItem("selectedTheme", selectedTheme);
+        applyTheme(selectedTheme);
+      });
+    });
+  </script>
+</body>
+</html>

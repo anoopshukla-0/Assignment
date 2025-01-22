@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-User Shopping Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    input, button, select {
+      padding: 10px;
+      margin: 5px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Multi-User Shopping Cart</h1>
+
+  <div id="loginSection">
+    <input type="text" id="username" placeholder="Enter your username">
+    <button id="loginBtn">Login</button>
+  </div>
+
+  <div id="cartSection" class="hidden">
+    <h2>Your Shopping Cart</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Item Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="cartTableBody"></tbody>
+    </table>
+    <h3>Total Cost: $<span id="totalCost">0</span></h3>
+
+    <input type="text" id="itemName" placeholder="Item Name">
+    <input type="number" id="itemPrice" placeholder="Price" min="0" step="0.01">
+    <input type="number" id="itemQuantity" placeholder="Quantity" min="1">
+    <button id="addItemBtn">Add Item</button>
+    <button id="logoutBtn">Logout</button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const loginSection = document.getElementById("loginSection");
+      const cartSection = document.getElementById("cartSection");
+      const usernameInput = document.getElementById("username");
+      const loginBtn = document.getElementById("loginBtn");
+      const logoutBtn = document.getElementById("logoutBtn");
+
+      const cartTableBody = document.getElementById("cartTableBody");
+      const totalCostEl = document.getElementById("totalCost");
+
+      const itemNameInput = document.getElementById("itemName");
+      const itemPriceInput = document.getElementById("itemPrice");
+      const itemQuantityInput = document.getElementById("itemQuantity");
+      const addItemBtn = document.getElementById("addItemBtn");
+
+      let currentUser = null;
+      let carts = JSON.parse(localStorage.getItem("carts")) || {};
+
+      const renderCart = () => {
+        const cart = carts[currentUser] || [];
+        cartTableBody.innerHTML = "";
+        let totalCost = 0;
+
+        cart.forEach((item, index) => {
+          const row = document.createElement("tr");
+
+          row.innerHTML = `
+            <td>${item.itemName}</td>
+            <td>$${item.price.toFixed(2)}</td>
+            <td>
+              <input type="number" min="1" value="${item.quantity}" data-index="${index}" class="editQuantity">
+            </td>
+            <td>$${(item.price * item.quantity).toFixed(2)}</td>
+            <td>
+              <button class="deleteItemBtn" data-index="${index}">Delete</button>
+            </td>
+          `;
+
+          cartTableBody.appendChild(row);
+          totalCost += item.price * item.quantity;
+        });
+
+        totalCostEl.textContent = totalCost.toFixed(2);
+      };
+
+      const saveCart = () => {
+        localStorage.setItem("carts", JSON.stringify(carts));
+      };
+
+      const login = () => {
+        const username = usernameInput.value.trim();
+        if (!username) {
+          alert("Username cannot be empty!");
+          return;
+        }
+
+        currentUser = username;
+        if (!carts[currentUser]) {
+          carts[currentUser] = [];
+        }
+
+        loginSection.classList.add("hidden");
+        cartSection.classList.remove("hidden");
+        renderCart();
+      };
+
+      const logout = () => {
+        currentUser = null;
+        loginSection.classList.remove("hidden");
+        cartSection.classList.add("hidden");
+        usernameInput.value = "";
+      };
+
+      const addItem = () => {
+        const itemName = itemNameInput.value.trim();
+        const price = parseFloat(itemPriceInput.value);
+        const quantity = parseInt(itemQuantityInput.value, 10);
+
+        if (!itemName || isNaN(price) || isNaN(quantity) || price <= 0 || quantity <= 0) {
+          alert("Please enter valid item details!");
+          return;
+        }
+
+        carts[currentUser].push({ itemName, price, quantity });
+        saveCart();
+        renderCart();
+
+        itemNameInput.value = "";
+        itemPriceInput.value = "";
+        itemQuantityInput.value = "";
+      };
+
+      const updateQuantity = (index, newQuantity) => {
+        if (newQuantity <= 0) {
+          alert("Quantity must be at least 1!");
+          return;
+        }
+
+        carts[currentUser][index].quantity = newQuantity;
+        saveCart();
+        renderCart();
+      };
+
+      const deleteItem = (index) => {
+        carts[currentUser].splice(index, 1);
+        saveCart();
+        renderCart();
+      };
+
+      loginBtn.addEventListener("click", login);
+      logoutBtn.addEventListener("click", logout);
+      addItemBtn.addEventListener("click", addItem);
+
+      cartTableBody.addEventListener("input", (e) => {
+        if (e.target.classList.contains("editQuantity")) {
+          const index = parseInt(e.target.dataset.index, 10);
+          const newQuantity = parseInt(e.target.value, 10);
+          updateQuantity(index, newQuantity);
+        }
+      });
+
+      cartTableBody.addEventListener("click", (e) => {
+        if (e.target.classList.contains("deleteItemBtn")) {
+          const index = parseInt(e.target.dataset.index, 10);
+          deleteItem(index);
+        }
+      });
+
+      if (currentUser) {
+        loginSection.classList.add("hidden");
+        cartSection.classList.remove("hidden");
+        renderCart();
+      }
+    });
+  </script>
+</body>
+</html>
