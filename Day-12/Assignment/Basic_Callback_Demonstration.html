@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Interaction Simulation</title>
+</head>
+<body>
+  <h1>Welcome to the User Interaction Simulation</h1>
+  <p id="message">Waiting for user input...</p>
+
+  <script>
+    // Function to display a greeting message
+    function displayMessage(name) {
+      const messageElement = document.getElementById("message");
+      messageElement.textContent = `Hello, ${name}!`;
+    }
+
+    // Function to simulate retrieving a username and calling a callback
+    function getUserInput(callback) {
+      setTimeout(() => {
+        const retrievedName = "Alice"; // Simulated username
+        callback(retrievedName); // Call the callback with the retrieved name
+      }, 1000);
+    }
+
+    // Using the functions
+    getUserInput(displayMessage);
+  </script>
+</body>
+</html>

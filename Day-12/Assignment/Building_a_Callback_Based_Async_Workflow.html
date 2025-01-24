@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Registration Workflow</title>
+</head>
+<body>
+  <h1>Check the Console for Workflow Execution</h1>
+  <script>
+    // Simulate user registration with a 1-second delay
+    function registerUser(callback) {
+      console.log("Registering user...");
+      setTimeout(() => {
+        const registrationSuccess = true; // Change this to `false` to simulate failure
+        if (registrationSuccess) {
+          console.log("User registered successfully");
+          callback(null); // No error, proceed to the next step
+        } else {
+          callback("Registration failed: Invalid user data"); // Pass error message if failed
+        }
+      }, 1000);
+    }
+
+    // Simulate sending verification email with a 1-second delay
+    function sendVerification(callback) {
+      console.log("Sending verification email...");
+      setTimeout(() => {
+        const verificationSuccess = true; // Change this to `false` to simulate failure
+        if (verificationSuccess) {
+          console.log("Verification email sent");
+          callback(null); // No error, proceed to the next step
+        } else {
+          callback("Verification failed: Email not sent"); // Pass error message if failed
+        }
+      }, 1000);
+    }
+
+    // Simulate logging the user in with a 1-second delay
+    function loginUser(callback) {
+      console.log("Logging user in...");
+      setTimeout(() => {
+        const loginSuccess = true; // Change this to `false` to simulate failure
+        if (loginSuccess) {
+          console.log("User logged in successfully");
+          callback(null); // No error, proceed to the next step
+        } else {
+          callback("Login failed: Incorrect credentials"); // Pass error message if failed
+        }
+      }, 1000);
+    }
+
+    // Simulate displaying the welcome message with a 1-second delay
+    function displayWelcomeMessage(callback) {
+      console.log("Displaying welcome message...");
+      setTimeout(() => {
+        console.log("Welcome to the platform!");
+        callback(null); // No error, end the workflow
+      }, 1000);
+    }
+
+    // Start the workflow with error handling
+    registerUser((err) => {
+      if (err) {
+        console.log(err); // Log the error and stop the workflow
+        return;
+      }
+      sendVerification((err) => {
+        if (err) {
+          console.log(err); // Log the error and stop the workflow
+          return;
+        }
+        loginUser((err) => {
+          if (err) {
+            console.log(err); // Log the error and stop the workflow
+            return;
+          }
+          displayWelcomeMessage((err) => {
+            if (err) {
+              console.log(err); // Log the error and stop the workflow
+              return;
+            }
+            console.log("All tasks completed successfully");
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

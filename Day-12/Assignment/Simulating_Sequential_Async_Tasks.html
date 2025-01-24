@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Callback Hell Example</title>
+</head>
+<body>
+  <h1>Open the Console to See the Task Sequence</h1>
+  <script>
+    // Simulate task1 with a 1-second delay
+    function task1(callback) {
+      setTimeout(() => {
+        console.log("Task 1 complete");
+        callback(); // Call next task
+      }, 1000);
+    }
+
+    // Simulate task2 with a 1-second delay
+    function task2(callback) {
+      setTimeout(() => {
+        console.log("Task 2 complete");
+        callback(); // Call next task
+      }, 1000);
+    }
+
+    // Simulate task3 with a 1-second delay
+    function task3(callback) {
+      setTimeout(() => {
+        console.log("Task 3 complete");
+        callback(); // Call next task
+      }, 1000);
+    }
+
+    // Simulate task4 with a 1-second delay
+    function task4(callback) {
+      setTimeout(() => {
+        console.log("Task 4 complete");
+        callback(); // Call the final log message
+      }, 1000);
+    }
+
+    // Execute the tasks sequentially using nested callbacks
+    task1(() => {
+      task2(() => {
+        task3(() => {
+          task4(() => {
+            console.log("All tasks completed");
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
