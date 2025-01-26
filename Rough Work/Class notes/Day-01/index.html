@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masai E Commerce Website</title>
+    <style>
+        #container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            margin:20px;
+            grid-gap:20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #container > div {
+            border: 1px solid black;
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            width: 80%;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="filters"></div>
+    <div id="container"></div>
+</body>
+</html>
+<script src="./index.js"></script>

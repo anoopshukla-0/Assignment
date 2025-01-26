@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Periodic Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #F4F4F4;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .periodic-table {
+      display: grid;
+      grid-template-columns: repeat(18, 60px); /* 18 columns */
+      grid-gap: 5px;
+      justify-content: center;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .element {
+      text-align: center;
+      font-size: 12px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      line-height: 1.2;
+    }
+    .alkali-metal { background-color: #FF9999; }
+    .alkaline-earth-metal { background-color: #FFCC99; }
+    .transition-metal { background-color: #99CCFF; }
+    .metalloid { background-color: #FFFF99; }
+    .halogen { background-color: #FFDD99; }
+    .noble-gas { background-color: #DCDCDC; }
+    .lanthanide { background-color: #99FF99; }
+    .actinide { background-color: #CCFFCC; }
+    .empty {
+      background-color: transparent;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Periodic Table</h1>
+  <div class="periodic-table">
+    <!-- Row 1 -->
+    <div class="element noble-gas">1<br>H</div>
+    <div class="empty" style="grid-column: span 16;"></div>
+    <div class="element noble-gas">2<br>He</div>
+    <!-- Row 2 -->
+    <div class="element alkali-metal">3<br>Li</div>
+    <div class="element alkaline-earth-metal">4<br>Be</div>
+    <div class="empty" style="grid-column: span 10;"></div>
+    <div class="element metalloid">5<br>B</div>
+    <div class="element metalloid">6<br>C</div>
+    <div class="element metalloid">7<br>N</div>
+    <div class="element metalloid">8<br>O</div>
+    <div class="element metalloid">9<br>F</div>
+    <div class="element noble-gas">10<br>Ne</div>
+    <!-- Row 3 -->
+    <div class="element alkali-metal">11<br>Na</div>
+    <div class="element alkaline-earth-metal">12<br>Mg</div>
+    <div class="empty" style="grid-column: span 10;"></div>
+    <div class="element metalloid">13<br>Al</div>
+    <div class="element metalloid">14<br>Si</div>
+    <div class="element metalloid">15<br>P</div>
+    <div class="element metalloid">16<br>S</div>
+    <div class="element metalloid">17<br>Cl</div>
+    <div class="element noble-gas">18<br>Ar</div>
+    <!-- Row 4 -->
+    <div class="element alkali-metal">19<br>K</div>
+    <div class="element alkaline-earth-metal">20<br>Ca</div>
+    <div class="element transition-metal">21<br>Sc</div>
+    <div class="element transition-metal">22<br>Ti</div>
+    <div class="element transition-metal">23<br>V</div>
+    <div class="element transition-metal">24<br>Cr</div>
+    <div class="element transition-metal">25<br>Mn</div>
+    <div class="element transition-metal">26<br>Fe</div>
+    <div class="element transition-metal">27<br>Co</div>
+    <div class="element transition-metal">28<br>Ni</div>
+    <div class="element transition-metal">29<br>Cu</div>
+    <div class="element transition-metal">30<br>Zn</div>
+    <div class="element metalloid">31<br>Ga</div>
+    <div class="element metalloid">32<br>Ge</div>
+    <div class="element metalloid">33<br>As</div>
+    <div class="element metalloid">34<br>Se</div>
+    <div class="element metalloid">35<br>Br</div>
+    <div class="element noble-gas">36<br>Kr</div>
+    <!-- Row 5 -->
+    <div class="element alkali-metal">37<br>Rb</div>
+    <div class="element alkaline-earth-metal">38<br>Sr</div>
+    <div class="element transition-metal">39<br>Y</div>
+    <div class="element transition-metal">40<br>Zr</div>
+    <div class="element transition-metal">41<br>Nb</div>
+    <div class="element transition-metal">42<br>Mo</div>
+    <div class="element transition-metal">43<br>Tc</div>
+    <div class="element transition-metal">44<br>Ru</div>
+    <div class="element transition-metal">45<br>Rh</div>
+    <div class="element transition-metal">46<br>Pd</div>
+    <div class="element transition-metal">47<br>Ag</div>
+    <div class="element transition-metal">48<br>Cd</div>
+    <div class="element metalloid">49<br>In</div>
+    <div class="element metalloid">50<br>Sn</div>
+    <div class="element metalloid">51<br>Sb</div>
+    <div class="element metalloid">52<br>Te</div>
+    <div class="element metalloid">53<br>I</div>
+    <div class="element noble-gas">54<br>Xe</div>
+    <!-- Add rows for lanthanides, actinides, and other elements as needed -->
+  </div>
+</body>
+</html>

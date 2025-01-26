@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creating layout</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #e4e0e0;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        margin: 30px 45px;
+        height: 105vh;
+        display: flex;
+        gap: 30px;
+      }
+
+      .container > div > h1 {
+        font-weight: bolder;
+        font-size: 32px;
+      }
+
+      .container > div {
+        width: 100%;
+        padding: 30px;
+        background-color: #fff;
+      }
+
+      .container .image {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .container .image > div p {
+        color: black;
+        font-size: 16px;
+        line-height: 1.2;
+        font-family: Arial, sans-serif;
+        max-width: 240px;
+        word-wrap: break-word;
+        margin-top: 8px;
+      }
+
+      .container .image > div img {
+        width: 240px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 4px;
+      }
+
+      .container .image > div p::before {
+        display: block;
+        margin-bottom: 5px;
+        height: 2px;
+        width: 50px;
+        background-color: #d9d9d9;
+      }
+
+      .container a {
+        display: inline-block;
+        margin-top: 40px;
+        text-decoration: none;
+        color: #0073e6;
+        font-weight: bold;
+        font-size: 16px;
+        transition: color 0.3s ease;
+      }
+
+      .container a:hover {
+        color: #005bb5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Section 1 -->
+      <div class="item">
+        <h1>Revamp your home in style</h1>
+        <br />
+        <div class="image">
+          <div>
+            <img
+              src="https://m.media-amazon.com/images/I/61YaejcRy1L._SL1080_.jpg"
+              alt="Panda Night Light"
+            />
+            <p>RUCON® Panda Silicone Night Light for Kids</p>
+          </div>
+          <div>
+            <img
+              src="https://m.media-amazon.com/images/I/51PCWVSB4JL._SY445_SX342_QL70_FMwebp_.jpg"
+              alt="Moon Lamp"
+            />
+            <p>PRIMESKY® Moon Lamp 3D 7 Color Changing Moon Light</p>
+          </div>
+          <div>
+            <img
+              src="https://m.media-amazon.com/images/I/41BywNp6MFL._SX300_SY300_QL70_FMwebp_.jpg"
+              alt="Home Storage"
+            />
+            <p>Home Storage</p>
+          </div>
+          <div>
+            <img
+              src="https://m.media-amazon.com/images/I/41BywNp6MFL._SX300_SY300_QL70_FMwebp_.jpg"
+              alt="Lighting Solution"
+            />
+            <p>Lighting Solution</p>
+          </div>
+        </div>
+        <a href="#">Expolre All</a>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="item-2">
+        <h1>Starting ₹149 | Headphones</h1>
+        <br />
+        <div class="image">
+          <div>
+            <img
+              src="https://m.media-amazon.com/images/I/41hqwowvRWL._SX300_SY300_QL70_FMwebp_.jpg"
+              alt="Headphones"
+            />
+            <p>Wired Headphones</p>
+          </div>
+          <div>
+            <img
+              src="https://m.media-amazon.com/images/I/31Wen6gm2JL._SX300_SY300_QL70_FMwebp_.jpg"
+              alt="Bluetooth Earbuds"
+            />
+            <p>Bluetooth Earbuds</p>
+          </div>
+          <div>
+            <img
+              src="https://m.media-amazon.com/images/I/41x4-FBtJZL._SX300_SY300_QL70_FMwebp_.jpg"
+              alt="Gaming Headphones"
+            />
+            <p>Gaming Headphones</p>
+          </div>
+          <div>
+            <img
+              src="https://m.media-amazon.com/images/I/51aXvjzcukL._SL1500_.jpg"
+              alt="Wireless Headphones"
+            />
+            <p>Wireless Headphones</p>
+          </div>
+        </div>
+        <a href="#">See All Offers</a>
+      </div>
+    </div>
+  </body>
+</html>

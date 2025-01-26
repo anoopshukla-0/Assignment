@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Periodic Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .periodic-table {
+      display: grid;
+      grid-template-columns: repeat(18, 60px);
+      grid-gap: 5px;
+      margin: 0 auto;
+      max-width: 1080px;
+    }
+
+    .element {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      text-align: center;
+      padding: 5px;
+      font-size: 12px;
+      background-color: #fff;
+    }
+
+    /* Define specific colors for element groups */
+    .group-1 { background-color: #f8a7a7; } /* Alkali metals */
+    .group-2 { background-color: #f8c8c8; } /* Alkaline earth metals */
+    .transition-metal { background-color: #c8e0f8; } /* Transition metals */
+    .metalloid { background-color: #f8e6c8; } /* Metalloids */
+    .non-metal { background-color: #f6d6a7; } /* Non-metals */
+    .halogen { background-color: #f8c7a7; } /* Halogens */
+    .noble-gas { background-color: #f7f4c8; } /* Noble gases */
+    .lanthanide { background-color: #c8f8e0; } /* Lanthanides */
+    .actinide { background-color: #c8f8d8; } /* Actinides */
+    .empty {
+      background-color: transparent;
+      border: none;
+    }
+
+    .row-label {
+      grid-column: span 18;
+      text-align: left;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Periodic Table</h1>
+  <div class="periodic-table">
+    <!-- Period 1 -->
+    <div class="element group-1">1<br>H</div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="element noble-gas">2<br>He</div>
+
+    <!-- Period 2 -->
+    <div class="element group-1">3<br>Li</div>
+    <div class="element group-2">4<br>Be</div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="element non-metal">5<br>B</div>
+    <div class="element non-metal">6<br>C</div>
+    <div class="element non-metal">7<br>N</div>
+    <div class="element non-metal">8<br>O</div>
+    <div class="element halogen">9<br>F</div>
+    <div class="element noble-gas">10<br>Ne</div>
+
+    <!-- Period 3 -->
+    <div class="element group-1">11<br>Na</div>
+    <div class="element group-2">12<br>Mg</div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="element non-metal">13<br>Al</div>
+    <div class="element non-metal">14<br>Si</div>
+    <div class="element non-metal">15<br>P</div>
+    <div class="element non-metal">16<br>S</div>
+    <div class="element halogen">17<br>Cl</div>
+    <div class="element noble-gas">18<br>Ar</div>
+
+    <!-- Transition Metals (Periods 4-7) -->
+    <!-- Add similar layout for transition metals -->
+
+    <!-- Lanthanides -->
+    <div class="row-label">Lanthanides:</div>
+    <div class="element lanthanide">57<br>La</div>
+    <div class="element lanthanide">58<br>Ce</div>
+    <!-- Add other lanthanides -->
+
+    <!-- Actinides -->
+    <div class="row-label">Actinides:</div>
+    <div class="element actinide">89<br>Ac</div>
+    <div class="element actinide">90<br>Th</div>
+    <!-- Add other actinides -->
+  </div>
+</body>
+</html>

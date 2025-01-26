@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Form</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        /* Form styles */
+        form {
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        form label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        form input, form select, form button {
+            width: calc(100% - 20px);
+            padding: 8px 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        form button {
+            width: 100%;
+            background: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background: #218838;
+        }
+
+        /* Table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table thead {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            font-weight: bold;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .deleteBtn {
+            background: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .deleteBtn:hover {
+            background: #c82333;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            form, table {
+                width: 100%;
+            }
+
+            form button {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            table th, table td {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Total Price: <span id="totalPrice">0</span></h1>
+
+    <form id="productForm">
+        <label for="productName">Product Name: </label>
+        <input type="text" id="productName" name="productName" required>
+
+        <label for="productCategory">Product Category: </label>
+        <select id="productCategory" name="productCategory" required>
+            <option value="Electronics">Electronics</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Home">Home</option>
+        </select>
+
+        <label for="brand">Brand: </label>
+        <input type="text" id="brand" name="brand" required>
+
+        <label for="price">Price: </label>
+        <input type="number" id="price" name="price" required>
+
+        <label for="deliveredBy">Delivered By: </label>
+        <select id="deliveredBy" name="deliveredBy" required>
+            <option value="FedEx">FedEx</option>
+            <option value="DHL">DHL</option>
+            <option value="UPS">UPS</option>
+        </select>
+
+        <button type="submit">Add Product</button>
+    </form>
+
+    <table id="productTable">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Brand</th>
+                <th>Price</th>
+                <th>Delivered By</th>
+                <th>Price Segment</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dynamic rows will go here -->
+        </tbody>
+    </table>
+
+    <script>
+        const form = document.getElementById('productForm');
+        const tableBody = document.querySelector('#productTable tbody');
+        const totalPriceElement = document.getElementById('totalPrice');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const productName = document.getElementById('productName').value;
+            const productCategory = document.getElementById('productCategory').value;
+            const brand = document.getElementById('brand').value;
+            const price = parseFloat(document.getElementById('price').value);
+            const deliveredBy = document.getElementById('deliveredBy').value;
+
+            // Calculate Price Segment
+            let priceSegment = '';
+            if (price < 50) {
+                priceSegment = 'Cheap';
+            } else if (price >= 50 && price < 200) {
+                priceSegment = 'Affordable';
+            } else {
+                priceSegment = 'Expensive';
+            }
+
+            // Add row to the table
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${productName}</td>
+                <td>${productCategory}</td>
+                <td>${brand}</td>
+                <td>${price}</td>
+                <td>${deliveredBy}</td>
+                <td>${priceSegment}</td>
+                <td><button class="deleteBtn">Delete</button></td>
+            `;
+            tableBody.appendChild(newRow);
+
+            // Update total price
+            updateTotalPrice(price);
+
+            // Clear the form fields
+            form.reset();
+        });
+
+        // Function to update total price

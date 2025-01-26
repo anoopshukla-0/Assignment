@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Theme</title>
+</head>
+<body>
+    <button id="toggleTheme">Toggle Theme</button>
+</body>
+</html>
+<script>
+    const toggleTheme = document.getElementById("toggleTheme");
+
+    toggleTheme.addEventListener(click, ()=> {
+        const theme = localStorage.setItem("theme");
+        if(toggleTheme == "dark"){
+            const theme = localStorage.getItem("theme", "white");
+            toggleTheme.style.backgroundColor = "#fff"
+        }else{
+            toggleTheme.style.bac
+        }
+    })
+
+</script>

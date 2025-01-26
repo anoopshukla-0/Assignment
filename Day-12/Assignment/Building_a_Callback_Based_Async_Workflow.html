@@ -12,12 +12,12 @@
     function registerUser(callback) {
       console.log("Registering user...");
       setTimeout(() => {
-        const registrationSuccess = true; // Change this to `false` to simulate failure
+        const registrationSuccess = true; 
         if (registrationSuccess) {
           console.log("User registered successfully");
-          callback(null); // No error, proceed to the next step
+          callback(null); 
         } else {
-          callback("Registration failed: Invalid user data"); // Pass error message if failed
+          callback("Registration failed: Invalid user data"); 
         }
       }, 1000);
     }
@@ -26,12 +26,12 @@
     function sendVerification(callback) {
       console.log("Sending verification email...");
       setTimeout(() => {
-        const verificationSuccess = true; // Change this to `false` to simulate failure
+        const verificationSuccess = true; 
         if (verificationSuccess) {
           console.log("Verification email sent");
-          callback(null); // No error, proceed to the next step
+          callback(null); 
         } else {
-          callback("Verification failed: Email not sent"); // Pass error message if failed
+          callback("Verification failed: Email not sent"); 
         }
       }, 1000);
     }
