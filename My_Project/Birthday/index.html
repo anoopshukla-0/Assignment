@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Time Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Life Time Calculator</h1>
+        <p>Enter your birthdate to find out how many days, minutes, and leap years you've lived!</p>
+        
+        <div class="input-group">
+            <label for="birthdate">Your Birthdate:</label>
+            <input type="date" id="birthdate" required>
+        </div>
+
+        <div class="input-group">
+            <label for="sleepHours">Daily Sleep Hours (approx):</label>
+            <input type="number" id="sleepHours" min="0" max="24" value="8" required>
+        </div>
+
+        <button id="calculateBtn">Calculate</button>
+
+        <!-- Dark Mode Toggle -->
+        <div class="dark-mode-toggle">
+            <label for="darkMode">Dark Mode</label>
+            <input type="checkbox" id="darkMode">
+        </div>
+    </div>
+
+    <!-- Popup Modal -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Your Life in Numbers</h2>
+            <div class="result-item">
+                <i class="fas fa-birthday-cake"></i>
+                <p>You are <span id="yearsOld"></span> years and <span id="daysOld"></span> days old.</p>
+            </div>
+            <div class="result-item">
+                <i class="fas fa-calendar-day"></i>
+                <p><span id="daysLived"></span> Days Lived</p>
+            </div>
+            <div class="result-item">
+                <i class="fas fa-clock"></i>
+                <p><span id="minutesLived"></span> Minutes Lived</p>
+            </div>
+            <div class="result-item">
+                <i class="fas fa-calendar-check"></i>
+                <p><span id="leapYears"></span> Leap Years</p>
+            </div>
+            <div class="result-item">
+                <i class="fas fa-bed"></i>
+                <p><span id="sleepDays"></span> Days Spent Sleeping</p>
+            </div>
+            <div class="result-item">
+                <i class="fas fa-moon"></i>
+                <p><span id="sleepYears"></span> Years Spent Sleeping</p>
+            </div>
+            <div class="result-item">
+                <i class="fas fa-percentage"></i>
+                <p><span id="sleepPercentage"></span> of Your Life Spent Sleeping</p>
+            </div>
+            <div class="progress-bar">
+                <div id="progress" class="progress"></div>
+            </div>
+            <div class="fun-fact">
+                <h3>Did You Know?</h3>
+                <p id="funFact"></p>
+            </div>
+            <div class="motivational-quote">
+                <h3>Motivational Quote</h3>
+                <p id="motivationalQuote"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Alert Modal -->
+    <div id="alertModal" class="alert-modal">
+        <div class="alert-content">
+            <p id="alertMessage"></p>
+            <button id="alertCloseBtn">OK</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

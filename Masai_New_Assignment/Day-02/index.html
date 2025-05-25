@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: rgba(130, 130, 81, 0.397);
+        margin: 0;
+        padding: 0;
+      }
+
+      #chart-container {
+        position: relative;
+        height: 80vh;
+        width: 100%;
+        padding: 40px;
+        box-sizing: border-box;
+      }
+
+      /* X-axis */
+      .x-axis {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 90%;
+        margin-left: 59px;
+        height: 2px;
+        background-color: black;
+      }
+
+      /* Y-axis */
+      .y-axis {
+        position: absolute;
+        top: 0;
+        left: 59px; /* matches the left padding of #box */
+        width: 2px;
+        height: 100%;
+        background-color: black;
+      }
+
+      div#box {
+        height: 70vh;
+        padding-top: 20px;
+        padding-left: 59px;
+        width: 90%;
+        display: flex;
+        justify-content: space-around;
+        align-items: end;
+      }
+
+      div#box > div {
+        width: 60px;
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+      }
+
+      div#box > div:nth-child(1) {
+        height: 92%;
+        background-color: rgb(188, 67, 67);
+      }
+      div#box > div:nth-child(2) {
+        height: 60%;
+        background-color: rgb(133, 17, 73);
+      }
+      div#box > div:nth-child(3) {
+        height: 80%;
+        background-color: rgb(138, 193, 136);
+      }
+      div#box > div:nth-child(4) {
+        height: 30%;
+        background-color: rgb(170, 82, 5);
+      }
+      div#box > div:nth-child(5) {
+        height: 90%;
+        background-color: rgb(51, 168, 226);
+      }
+      div#box > div:nth-child(6) {
+        height: 74%;
+        background-color: rgb(32, 134, 24);
+      }
+      div#box > div:nth-child(7) {
+        height: 40%;
+        background-color: rgb(151, 187, 8);
+      }
+      div#box > div:nth-child(8) {
+        height: 60%;
+        background-color: rgb(212, 189, 15);
+      }
+      div#box > div:nth-child(9) {
+        height: 50%;
+        background-color: rgb(2, 111, 130);
+      }
+      div#box > div:nth-child(10) {
+        height: 39%;
+        background-color: rgba(46, 5, 113, 0.559);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chart-container">
+      <!-- Axis lines -->
+      <div class="x-axis"></div>
+      <div class="y-axis"></div>
+
+      <!-- Bar Chart -->
+      <div id="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+      </div>
+    </div>
+  </body>
+</html>

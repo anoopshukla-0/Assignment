@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div#container {
+        height: 50vh;
+        width: 80%;
+        margin: auto;
+        display: grid;
+        grid-template-areas:
+          "q1 q1 q2"
+          "q3 q4 q2";
+        /* background-color: yellow; */
+        border: 2px solid black;
+      }
+      div#container > div:nth-last-of-type(1) {
+        background-color: red;
+        grid-area: q1;
+      }
+      div#container > div:nth-last-of-type(2) {
+        background-color: blue;
+        grid-area: q2;
+      }
+      div#container > div:nth-last-of-type(3) {
+        background-color: rgb(59, 47, 42);
+        grid-area: q3;
+      }
+      div#container > div:nth-last-of-type(4) {
+        background-color: purple;
+        grid-area: q4;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+    </div>
+  </body>
+</html>
